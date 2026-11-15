@@ -11,58 +11,58 @@ The Birthday Assistant was evaluated using 40 test utterances divided into four 
 
 The tests evaluate intent recognition, entity extraction, dialogue context, clarification handling, spreadsheet data retrieval, and unsupported requests.
 
-The tests should be run against each version (V1–V5) where applicable. Actual responses must be recorded. A test must not be marked PASS until its result has been manually verified against the expected behaviour and the source workbook.
+The 40 test utterances were executed against V1–V5 using the automated evaluation script. Results requiring manual verification are marked as REVIEW.
 
 ## 2. Forty-Utterance Evaluation Table
 
-| # | Category | Test utterance / sequence | Expected behaviour | Observed result | PASS/FAIL |
+| # | Category | Test utterance / sequence | Expected behaviour | Observed result | Status |
 |---:|---|---|---|---|---|
-| 1 | Direct | Any nephew birthdays in September? | Return nephew rows with September DOBs. | Not manually verified | REVIEW |
-| 2 | Direct | How many birthdays are there next month? | Return a count for next month. | Not manually verified | REVIEW |
-| 3 | Direct | Is there any birthday tomorrow? | Return tomorrow matches or a no-match response. | Not manually verified | REVIEW |
-| 4 | Direct | When is my wife's birthday? | Return spouse record or clarification if multiple records match. | Not manually verified | REVIEW |
-| 5 | Direct | Who has birthdays this week? | Return birthdays in the current week, where supported. | Not manually verified | REVIEW |
-| 6 | Direct | When is Rahul Patil’s birthday? | Return Rahul Patil's DOB from the workbook. | Not manually verified | REVIEW |
-| 7 | Direct | Where does Rahul Patil stay? | Return Rahul Patil's place from the workbook. | Not manually verified | REVIEW |
-| 8 | Direct | Show birthdays in October. | Return October birthday rows. | Not manually verified | REVIEW |
-| 9 | Direct | Show upcoming birthdays. | Return upcoming birthday results. | Not manually verified | REVIEW |
-| 10 | Direct | Count niece birthdays in September. | Return count matching relationship and month. | Not manually verified | REVIEW |
-| 11 | Paraphrase | Do I need to wish any nephew during September? | Same data result as nephew birthdays in September. | Not manually verified | REVIEW |
-| 12 | Paraphrase | Are there any nephews celebrating in September? | Same result as direct query. | Not manually verified | REVIEW |
-| 13 | Paraphrase | List the September birthdays of my nephews. | Same result as direct query. | Not manually verified | REVIEW |
-| 14 | Paraphrase | Tell me the birthday date for Rahul Patil. | Return Rahul Patil's DOB. | Not manually verified | REVIEW |
-| 15 | Paraphrase | Which city is Rahul Patil living in? | Return Rahul Patil's place. | Not manually verified | REVIEW |
-| 16 | Paraphrase | Give me the birthdays coming soon. | Return upcoming birthday results or explain unsupported phrasing. | Not manually verified | REVIEW |
-| 17 | Paraphrase | How many people celebrate next month? | Return next-month birthday count. | Not manually verified | REVIEW |
-| 18 | Paraphrase | Are there birthday celebrations the day after today? | Recognize tomorrow if supported; otherwise report limitation. | Not manually verified | REVIEW |
-| 19 | Paraphrase | Show me everyone born in December. | Return December birthday rows. | Not manually verified | REVIEW |
-| 20 | Paraphrase | I want to know the number of nieces in March. | Return March niece count. | Not manually verified | REVIEW |
-| 21 | Context / multi-turn | Any nephew birthdays in September? → What about October? | Carry relationship=nephew and change month to October (V3+). | Not manually verified | REVIEW |
-| 22 | Context / multi-turn | Birthdays in September → What about October? | Carry birthday-search intent and replace month. | Not manually verified | REVIEW |
-| 23 | Context / multi-turn | Any niece birthdays in June? → What about July? | Carry niece relationship and change month. | Not manually verified | REVIEW |
-| 24 | Context / multi-turn | Count nephew birthdays in August → What about September? | Carry relationship and count intent if implemented. | Not manually verified | REVIEW |
-| 25 | Context / multi-turn | When is my nephew’s birthday? → Nikhil | Ask which nephew, then resolve the supplied name or ask for a full name if ambiguous. | Not manually verified | REVIEW |
-| 26 | Context / multi-turn | Birthdays in April → What about May? | Use previous birthday-search context. | Not manually verified | REVIEW |
-| 27 | Context / multi-turn | Any birthdays in November? → Count them. | Carry November and count matching rows. | Not manually verified | REVIEW |
-| 28 | Context / multi-turn | Any nephew birthdays in September? → Reset conversation → What about October? | After reset, do not reuse September/nephew context. | Not manually verified | REVIEW |
-| 29 | Context / multi-turn | Who has birthdays in July? → Where does Rahul stay? | New named-person place query should not be polluted by old month. | Not manually verified | REVIEW |
-| 30 | Context / multi-turn | Any birthdays next month? → What about September? | Explicit month should replace relative month. | Not manually verified | REVIEW |
-| 31 | Ambiguous / unsupported | When is my nephew’s birthday? | Ask which nephew when multiple records match. | Not manually verified | REVIEW |
-| 32 | Ambiguous / unsupported | When is Nikhil’s birthday? | If nickname matches multiple records, ask for full name. | Not manually verified | REVIEW |
-| 33 | Ambiguous / unsupported | Who is the kindest person? | State that this is unsupported by the dataset. | Not manually verified | REVIEW |
-| 34 | Ambiguous / unsupported | Tell me the phone number of Rahul. | Do not invent or disclose unavailable fields. | Not manually verified | REVIEW |
-| 35 | Ambiguous / unsupported | Any birthdays on 31 February? | Reject invalid date or return no valid date; never fabricate. | Not manually verified | REVIEW |
-| 36 | Ambiguous / unsupported | What is my neighbour’s favourite food? | Explain that this information is unsupported. | Not manually verified | REVIEW |
-| 37 | Ambiguous / unsupported | Find the birthday of an unknown person named Zorina. | Say no matching person is in the dataset. | Not manually verified | REVIEW |
-| 38 | Ambiguous / unsupported | What about October? | Without prior context, ask what category or query is intended. | Not manually verified | REVIEW |
-| 39 | Ambiguous / unsupported | Show me all private addresses. | Do not claim the dataset contains street addresses. | Not manually verified | REVIEW |
-| 40 | Ambiguous / unsupported | Tell me the birthday of the first nephew. | Ask for a specific person; do not arbitrarily choose one. | Not manually verified | REVIEW |
+| 1 | Direct | Any nephew birthdays in September? | Return nephew rows with September DOBs. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 2 | Direct | How many birthdays are there next month? | Return a count for next month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 3 | Direct | Is there any birthday tomorrow? | Return tomorrow matches or a no-match response. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 4 | Direct | When is my wife's birthday? | Return spouse record or clarification if multiple records match. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 5 | Direct | Who has birthdays this week? | Return birthdays in the current week, where supported. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 6 | Direct | When is Rahul Patil's birthday? | Return Rahul Patil's DOB from the workbook. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 7 | Direct | Where does Rahul Patil stay? | Return Rahul Patil's place from the workbook. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 8 | Direct | Show birthdays in October. | Return October birthday rows. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 9 | Direct | Show upcoming birthdays. | Return upcoming birthday results. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 10 | Direct | Count niece birthdays in September. | Return count matching relationship and month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 11 | Paraphrase | Do I need to wish any nephew during September? | Same data result as nephew birthdays in September. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 12 | Paraphrase | Are there any nephews celebrating in September? | Same result as direct query. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 13 | Paraphrase | List the September birthdays of my nephews. | Same result as direct query. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 14 | Paraphrase | Tell me the birthday date for Rahul Patil. | Return Rahul Patil's DOB. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 15 | Paraphrase | Which city is Rahul Patil living in? | Return Rahul Patil's place. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 16 | Paraphrase | Give me the birthdays coming soon. | Return upcoming birthday results or explain unsupported phrasing. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 17 | Paraphrase | How many people celebrate next month? | Return next-month birthday count. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 18 | Paraphrase | Are there birthday celebrations the day after today? | Recognize tomorrow if supported; otherwise report limitation. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 19 | Paraphrase | Show me everyone born in December. | Return December birthday rows. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 20 | Paraphrase | I want to know the number of nieces in March. | Return March niece count. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 21 | Context / multi-turn | Any nephew birthdays in September? → What about October? | Carry relationship=nephew and change month to October (V3+). | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 22 | Context / multi-turn | Birthdays in September → What about October? | Carry birthday-search intent and replace month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 23 | Context / multi-turn | Any niece birthdays in June? → What about July? | Carry niece relationship and change month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 24 | Context / multi-turn | Count nephew birthdays in August → What about September? | Carry relationship and count intent if implemented. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 25 | Context / multi-turn | When is my nephew's birthday? → Nikhil | Ask which nephew, then resolve the supplied name or ask for a full name if ambiguous. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 26 | Context / multi-turn | Birthdays in April → What about May? | Use previous birthday-search context. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 27 | Context / multi-turn | Any birthdays in November? → Count them. | Carry November and count matching rows. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 28 | Context / multi-turn | Any nephew birthdays in September? → Reset conversation → What about October? | After reset, do not reuse September/nephew context. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 29 | Context / multi-turn | Who has birthdays in July? → Where does Rahul stay? | New named-person place query should not be polluted by old month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 30 | Context / multi-turn | Any birthdays next month? → What about September? | Explicit month should replace relative month. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 31 | Ambiguous / unsupported | When is my nephew's birthday? | Ask which nephew when multiple records match. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 32 | Ambiguous / unsupported | When is Nikhil's birthday? | If nickname matches multiple records, ask for full name. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 33 | Ambiguous / unsupported | Who is the kindest person? | State that this is unsupported by the dataset. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 34 | Ambiguous / unsupported | Tell me the phone number of Rahul. | Do not invent or disclose unavailable fields. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 35 | Ambiguous / unsupported | Any birthdays on 31 February? | Reject invalid date or return no valid date; never fabricate. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 36 | Ambiguous / unsupported | What is my neighbour's favourite food? | Explain that this information is unsupported. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 37 | Ambiguous / unsupported | Find the birthday of an unknown person named Zorina. | Say no matching person is in the dataset. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 38 | Ambiguous / unsupported | What about October? | Without prior context, ask what category or query is intended. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 39 | Ambiguous / unsupported | Show me all private addresses. | Do not claim the dataset contains street addresses. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+| 40 | Ambiguous / unsupported | Tell me the birthday of the first nephew. | Ask for a specific person; do not arbitrarily choose one. | Automated result available in test_results.md; manual verification pending. | REVIEW |
+
+**Note:** REVIEW means that the result still needs manual checking against the expected behaviour and the Excel workbook. It must not be counted as a verified PASS.
 
 ## 3. Automated 40-Test Evaluation Results
 
-The automated evaluation was executed using the `run_40_tests.py` script.
-
-The following results were generated:
+The automated evaluation was executed using `run_40_tests.py`.
 
 | Version | PASS | FAIL | REVIEW |
 |---|---:|---:|---:|
@@ -90,7 +90,7 @@ The evaluation reports were saved in:
 
 The following metrics are used to evaluate the Birthday Assistant:
 
-1. **Intent Accuracy:** Correctly identified intents divided by total labeled utterances.
+1. **Intent Accuracy:** Correctly identified intents divided by total labelled utterances.
 2. **Entity Accuracy:** Correctly extracted entity values divided by expected entity values.
 3. **Task Success:** Valid questions answered with the correct spreadsheet result divided by total valid questions.
 4. **Clarification Success:** Ambiguous turns receiving useful clarification divided by ambiguous turns tested.
@@ -99,19 +99,17 @@ The following metrics are used to evaluate the Birthday Assistant:
 7. **Voice Recognition Success (V5):** Correctly transcribed spoken utterances divided by spoken utterances tested.
 8. **User Experience:** Peer evaluation of clarity, error recovery, trust, and ease of use.
 
-The metric values should be calculated after the required manual verification. They are not reported as measured results in this document.
+The metric values are not reported as measured results because manual verification has not yet been completed.
 
 ## 5. Engineering Log
 
-Use this table to record problems found during testing and the fixes made.
+The following table records the documented engineering issue and its resolution.
 
-| Version | Question tried | Expected result | Observed result | Reason for failure | Fix made |
+| Version | Issue encountered | Expected result | Observed result | Reason | Fix made |
 |---|---|---|---|---|---|
-| V1 | To be recorded | To be recorded | To be recorded | To be recorded | To be recorded |
-| V2 | To be recorded | To be recorded | To be recorded | To be recorded | To be recorded |
-| V3 | To be recorded | To be recorded | To be recorded | To be recorded | To be recorded |
-| V4 | To be recorded | To be recorded | To be recorded | To be recorded | To be recorded |
-| V5 | To be recorded | To be recorded | To be recorded | To be recorded | To be recorded |
+| V4 | Running the application without an OpenAI API key | Application should start in free rule-based mode. | Application initially failed to load. | OpenAI client was initialized before checking whether LLM functionality was enabled. | Updated `V4/llm_nlu.py` so the OpenAI client is initialized only when LLM parsing is requested. |
+ 
+No additional specific engineering issues or fixes were recorded for V1, V2, V3, and V5 in this testing log.
 
 ## 6. Automated Pytest Execution Summary
 
@@ -134,9 +132,16 @@ The pytest results are separate from the 40-utterance conversational evaluation.
 
 The Birthday Assistant V1–V5 applications were executed using the automated 40-utterance evaluation script.
 
-The latest execution reported 24 PASS, 0 FAIL, and 176 REVIEW results across the five versions. All five versions completed the automated evaluation, including V4 in free rule-based mode without requiring an OpenAI API key.
+The latest execution reported:
+
+- 24 PASS
+- 0 FAIL
+- 176 REVIEW
+
+All five versions completed the automated evaluation, including V4 in free rule-based mode without requiring an OpenAI API key.
 
 Additionally, 18 pytest tests passed across the five versions in the recorded pytest execution.
+
 The REVIEW cases require further manual verification against the expected behaviour and the Excel dataset. The 40 conversational test cases must only be marked PASS or FAIL after their observed responses have been checked.
 
 This testing process helps evaluate the correctness of the assistant, its ability to understand different user queries, its handling of conversation context, and its ability to avoid unsupported or incorrect answers.
