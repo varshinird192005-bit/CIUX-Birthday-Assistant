@@ -1,0 +1,172 @@
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f3f6fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 35px 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 2.3rem;
+  margin: 0 0 8px;
+  color: #173f7a;
+}
+
+.header p {
+  color: #64748b;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Chat container */
+.chat-card {
+  background: #ffffff;
+  border: 1px solid #dde5f0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(32, 54, 88, 0.07);
+}
+
+/* Chat messages */
+.chat {
+  height: 480px;
+  overflow-y: auto;
+  background: #f8faff;
+  border: 1px solid #e2e8f2;
+  border-radius: 12px;
+  padding: 16px;
+  scroll-behavior: smooth;
+}
+
+.message {
+  display: flex;
+  margin: 10px 0;
+}
+
+.bubble {
+  max-width: 82%;
+  white-space: pre-wrap;
+  line-height: 1.46;
+  padding: 11px 13px;
+  border-radius: 13px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.user .bubble {
+  background: #2359a8;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.message.bot .bubble {
+  background: #ffffff;
+  border: 1px solid #dce5f1;
+  border-bottom-left-radius: 4px;
+}
+
+/* Example questions */
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.chip {
+  border: 1px solid #d4deed;
+  background: #f9fbff;
+  color: #2f4f7d;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.chip:hover {
+  background: #edf3ff;
+}
+
+/* Message input */
+.composer {
+  display: flex;
+  gap: 8px;
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid #cbd6e6;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.composer input:focus {
+  border-color: #5b80bc;
+  box-shadow: 0 0 0 3px rgba(74, 111, 171, 0.13);
+}
+
+/* Send button */
+.send {
+  border: 0;
+  border-radius: 10px;
+  padding: 0 22px;
+  background: #173f7a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.send:hover {
+  background: #2359a8;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .page {
+    padding: 20px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .chat-card {
+    padding: 12px;
+  }
+
+  .chat {
+    height: 430px;
+  }
+
+  .composer {
+    flex-direction: column;
+  }
+
+  .send {
+    padding: 12px;
+  }
+}

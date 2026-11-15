@@ -1,0 +1,91 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Birthday Assistant - V1</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <!-- Header -->
+        <header class="header">
+            <h1>
+                Birthday Assistant
+                <span class="version">V1</span>
+            </h1>
+
+            <p>Ask me anything about birthdays!</p>
+        </header>
+
+        <!-- Chat Interface -->
+        <section class="chat-card">
+
+            <div id="chat" class="chat" aria-live="polite"></div>
+
+            <!-- Example Questions -->
+            <div class="chips" aria-label="Example questions">
+
+                <button class="chip"
+                        data-q="What are the upcoming birthdays?">
+                    Upcoming birthdays
+                </button>
+
+                <button class="chip"
+                        data-q="How many birthdays are there next month?">
+                    Count next month
+                </button>
+
+                <button class="chip"
+                        data-q="Is there any birthday tomorrow?">
+                    Tomorrow
+                </button>
+
+                <button class="chip"
+                        data-q="When is my wife's birthday?">
+                    Wife's birthday
+                </button>
+
+                <button class="chip"
+                        data-q="Any nephew birthdays in September?">
+                    Nephews in September
+                </button>
+
+            </div>
+
+            <!-- Message Input -->
+            <form id="chat-form" class="composer">
+
+                <input
+                    id="question"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Ask a birthday question..."
+                    aria-label="Question"
+                >
+
+                <button type="submit" class="send">
+                    Send
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Hidden trace element for JavaScript compatibility -->
+    <pre id="trace" hidden></pre>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+# Local artifacts
+*.log
+.DS_Store
+Thumbs.db
+# Keep the provided fictional teaching workbook tracked; exclude real/private exports explicitly.

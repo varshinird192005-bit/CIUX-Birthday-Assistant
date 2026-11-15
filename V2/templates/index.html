@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Birthday Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="page">
+
+        <header class="header">
+            <h1>Birthday Assistant <span class="version">V2</span></h1>
+            <p>Ask me anything about birthdays!</p>
+        </header>
+
+        <!-- Chat Interface -->
+        <section class="chat-card">
+
+            <div id="chat" class="chat" aria-live="polite"></div>
+
+            <div class="chips" aria-label="Example questions">
+                <button class="chip" data-q="What are the upcoming birthdays?">Upcoming birthdays</button>
+                <button class="chip" data-q="How many nephew birthdays are there in September?">Count nephews in September</button>
+                <button class="chip" data-q="Where does Rahul Patil stay?">Rahul's place</button>
+                <button class="chip" data-q="Show birthdays next month">Next month</button>
+                <button class="chip" data-q="Is there any birthday tomorrow?">Tomorrow</button>
+            </div>
+
+            <form id="chat-form" class="composer">
+                <input
+                    id="question"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Ask a birthday question..."
+                    aria-label="Question"
+                >
+                <button type="submit" class="send">Send</button>
+            </form>
+        </section>
+
+        <!-- New NLU Interpretation Panel -->
+        <section class="nlu-panel">
+            <div class="nlu-heading">
+                <div>
+                    <h2>How I understood your question</h2>
+                    <p>Natural Language Understanding (NLU)</p>
+                </div>
+                <span class="nlu-status">Live NLU</span>
+            </div>
+
+            <div class="nlu-content">
+
+                <div class="nlu-item">
+                    <span class="nlu-label">Detected Intent</span>
+                    <div id="nlu-intent" class="nlu-value">
+                        Waiting for your question...
+                    </div>
+                </div>
+
+                <div class="nlu-item">
+                    <span class="nlu-label">Extracted Entities</span>
+                    <pre id="nlu-entities" class="nlu-value">No entities extracted yet.</pre>
+                </div>
+
+            </div>
+
+            <p class="nlu-note">
+                The NLU module identifies what you want and extracts
+                important details before the query service generates an answer.
+            </p>
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
