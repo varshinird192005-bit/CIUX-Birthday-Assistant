@@ -5,11 +5,6 @@ import logging
 
 from openai import OpenAI
 
-# Connect using the environment variable
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
 logging.basicConfig(level=logging.INFO)
 
 SYSTEM = """
@@ -69,11 +64,10 @@ ALLOWED_ENTITIES = {
 def parse_with_llm(message):
 
     if not os.getenv("OPENAI_API_KEY"):
-        raise RuntimeError(
-            "OpenAI API key is not configured."
-        )
+        raise RuntimeError("OpenAI API key is not configured.")
 
     try:
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
         response = client.responses.create(
             model="gpt-5.4-mini",
@@ -82,10 +76,6 @@ def parse_with_llm(message):
         )
 
         output = response.output_text
-
-        print("\n========== OPENAI RESPONSE ==========")
-        print(output)
-
         result = json.loads(output)
 
         if not isinstance(result, dict):
@@ -111,19 +101,6 @@ def parse_with_llm(message):
             "entities": entities
         }
 
-    except Exception as error:
-
-        print("\n========== OPENAI REQUEST ERROR ==========")
-        print("Error type:", type(error).__name__)
-        print("Error:", str(error))
-
-        if hasattr(error, "body"):
-            print(
-                "Error body:",
-                json.dumps(error.body, default=str)
-            )
-
-        if hasattr(error, "request_id"):
-            print("Request ID:", error.request_id)
-
+    except Exception as exc:
+        logging.exception("LLM parsing failed")
         raise

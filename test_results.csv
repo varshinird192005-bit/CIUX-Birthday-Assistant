@@ -1,0 +1,787 @@
+﻿Version,Test #,Category,Utterance / sequence,Expected behaviour,Observed response,HTTP status,Assessment,Assessment note,Latency ms
+V1,1,Direct,Any nephew birthdays in September?,Return nephew rows with September DOBs.,"Birthdays in September:
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,30.4
+V1,2,Direct,How many birthdays are there next month?,Return a count for next month.,There are 6 birthdays in December.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,7.4
+V1,3,Direct,Is there any birthday tomorrow?,Return tomorrow matches or a no-match response.,No matching birthdays were found in tomorrow.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,7.7
+V1,4,Direct,When is my wife's birthday?,Return spouse record or a clarification if multiple.,Lakshmi Rao's birthday is 14 December 1982 (Wife).,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.4
+V1,5,Direct,Who has birthdays this week?,Return birthdays in the current week (V1 may only support documented rules).,No matching birthdays were found in the rest of this week.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.5
+V1,6,Direct,When is Rahul Patil’s birthday?,Return Rahul Patil DOB from workbook.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,2.1
+V1,7,Direct,Where does Rahul Patil stay?,Return Rahul Patil place from workbook.,Rahul Patil stays in Bengaluru.,200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,2.0
+V1,8,Direct,Show birthdays in October.,Return October birthday rows.,"Birthdays in October:
+• Nayana Kumar — 01 October (Sister-in-law; in 320 days)
+• Nikhil Hegde — 03 October (Nephew; in 322 days)
+• Nikhil Rao — 03 October (Uncle; in 322 days)
+• Aarav Shetty — 04 October (Student; in 323 days)
+• Manjunath Prasad — 06 October (Brother; in 325 days)
+• Pooja Patil — 06 October (Aunt; in 325 days)
+• Usha K — 09 October (Sister; in 328 days)
+• Rashmi Sharma — 14 October (Colleague; in 333 days)
+• Sneha Shetty — 16 October (Student; in 335 days)
+• Shruthi R — 17 October (Niece; in 336 days)
+• Yashaswini Murthy — 21 October (Niece; in 340 days)
+• Karthik Patil — 26 October (Brother-in-law; in 345 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,8.2
+V1,9,Direct,Show upcoming birthdays.,Return upcoming window results.,"Birthdays in the next 30 days:
+• Vaishnavi Naik — 19 November (Friend; in 4 days)
+• Manjunath Kumar — 27 November (Neighbour; in 12 days)
+• Vijay Shetty — 28 November (Nephew; in 13 days)
+• Sanjay Rao — 30 November (Brother; in 15 days)
+• Divya Naik — 03 December (Friend; in 18 days)
+• Divya Patil — 10 December (Sister-in-law; in 25 days)
+• Harish Joshi — 13 December (Uncle; in 28 days)
+• Lakshmi Rao — 14 December (Wife; in 29 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.7
+V1,10,Direct,Count niece birthdays in September.,Return count matching relationship and month.,There are 3 niece birthdays in September.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.7
+V1,11,Paraphrase,Do I need to wish any nephew during September?,Same data result as nephew birthdays in September.,"Birthdays in September:
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.5
+V1,12,Paraphrase,Are there any nephews celebrating in September?,Same result as direct query.,"Birthdays in September:
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.2
+V1,13,Paraphrase,List the September birthdays of my nephews.,Same result as direct query.,"Birthdays in September:
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,32.5
+V1,14,Paraphrase,Tell me the birthday date for Rahul Patil.,Return Rahul Patil DOB.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,3.5
+V1,15,Paraphrase,Which city is Rahul Patil living in?,Return Rahul Patil place.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Check place answer against workbook,2.8
+V1,16,Paraphrase,Give me the birthdays coming soon.,Return upcoming birthday results or explain unsupported phrasing.,I could not match that question to a V1 rule. Type 'examples' to see the patterns this deterministic version understands.,200,REVIEW,Response returned; manually verify semantic correctness.,17.2
+V1,17,Paraphrase,How many people celebrate next month?,Return next-month birthday count.,There are 6 birthdays in December.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,23.2
+V1,18,Paraphrase,Are there birthday celebrations the day after today?,Recognize tomorrow if supported; otherwise report limitation.,No matching birthdays were found in today.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,27.9
+V1,19,Paraphrase,Show me everyone born in December.,Return December birthday rows.,"Birthdays in December:
+• Divya Naik — 03 December (Friend; in 18 days)
+• Divya Patil — 10 December (Sister-in-law; in 25 days)
+• Harish Joshi — 13 December (Uncle; in 28 days)
+• Lakshmi Rao — 14 December (Wife; in 29 days)
+• Shreyas Desai — 16 December (Cousin; in 31 days)
+• Varun Kumar — 17 December (Nephew; in 32 days)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,19.5
+V1,20,Paraphrase,I want to know the number of nieces in March.,Return March niece count.,There are 2 niece birthdays in March.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,26.6
+V1,21,Context / multi-turn,Any nephew birthdays in September? → What about October?,Carry relationship=nephew and change month to October (V3+).,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,22,Context / multi-turn,Birthdays in September → What about October?,Carry birthday-search intent and replace month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,23,Context / multi-turn,Any niece birthdays in June? → What about July?,Carry niece relationship and change month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,24,Context / multi-turn,Count nephew birthdays in August → What about September?,Carry relationship and count intent if implemented.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,25,Context / multi-turn,When is my nephew’s birthday? → Nikhil,"Ask which nephew, then resolve the supplied name.",,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,26,Context / multi-turn,Birthdays in April → What about May?,Use previous birthday-search context.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,27,Context / multi-turn,Any birthdays in November? → Count them.,Carry November and count matching rows.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,28,Context / multi-turn,Any nephew birthdays in September? → Reset conversation → What about October?,"After reset, do not reuse September/nephew context.",,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,29,Context / multi-turn,Who has birthdays in July? → Where does Rahul stay?,New named-person place query should not be polluted by old month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,30,Context / multi-turn,Any birthdays next month? → What about September?,Explicit month should replace relative month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V1,31,Ambiguous / unsupported,When is my nephew’s birthday?,Ask which nephew when multiple records match.,"I found 12 people recorded as Nephew:
+• Vijay Shetty — 28 November (Nephew; in 13 days)
+• Varun Kumar — 17 December (Nephew; in 32 days)
+• Kiran R — 13 April (Nephew; in 149 days)
+• Vinay Desai — 28 July (Nephew; in 255 days)
+• Karthik Hegde — 01 August (Nephew; in 259 days)
+• Darshan M — 11 August (Nephew; in 269 days)
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)
+• Nikhil Hegde — 03 October (Nephew; in 322 days)
+• Ganesh Prasad — 01 November (Nephew; in 351 days)
+• Rohan Hegde — 03 November (Nephew; in 353 days)",200,REVIEW,Check whether response appropriately asks for clarification,30.3
+V1,32,Ambiguous / unsupported,When is Nikhil’s birthday?,"If nickname matches multiple records, ask for full name.",I could not match that question to a V1 rule. Type 'examples' to see the patterns this deterministic version understands.,200,REVIEW,Check nickname ambiguity against workbook,11.2
+V1,33,Ambiguous / unsupported,Who is the kindest person?,State that this is unsupported by the dataset.,I could not match that question to a V1 rule. Type 'examples' to see the patterns this deterministic version understands.,200,REVIEW,Verify no unsupported personal information was invented,12.5
+V1,34,Ambiguous / unsupported,Tell me the phone number of Rahul.,Do not invent or disclose unavailable fields.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Verify no unsupported personal information was invented,19.8
+V1,35,Ambiguous / unsupported,Any birthdays on 31 February?,Reject invalid date / return no valid date; never fabricate.,"Birthdays in February:
+• Harish K — 04 February (Brother; in 81 days)
+• Aarav Gowda — 08 February (Colleague; in 85 days)
+• Aditya Patil — 11 February (Brother; in 88 days)
+• Deepa R — 18 February (Sister-in-law; in 95 days)
+• Yashaswini Reddy — 20 February (Student; in 97 days)",200,REVIEW,Verify invalid date handling,21.0
+V1,36,Ambiguous / unsupported,What is my neighbour’s favourite food?,Explain unsupported information.,"I found 2 people recorded as Neighbour:
+• Manjunath Kumar — 27 November (Neighbour; in 12 days)
+• Shruthi Bhat — 21 March (Neighbour; in 126 days)",200,REVIEW,Verify no unsupported personal information was invented,14.6
+V1,37,Ambiguous / unsupported,Find the birthday of an unknown person named Zorina.,Say no matching person is in the dataset.,I could not match that question to a V1 rule. Type 'examples' to see the patterns this deterministic version understands.,200,REVIEW,Check that unknown person was not fabricated,12.0
+V1,38,Ambiguous / unsupported,What about October?,"Without prior context, ask what category/query is intended.","Birthdays in October:
+• Nayana Kumar — 01 October (Sister-in-law; in 320 days)
+• Nikhil Hegde — 03 October (Nephew; in 322 days)
+• Nikhil Rao — 03 October (Uncle; in 322 days)
+• Aarav Shetty — 04 October (Student; in 323 days)
+• Manjunath Prasad — 06 October (Brother; in 325 days)
+• Pooja Patil — 06 October (Aunt; in 325 days)
+• Usha K — 09 October (Sister; in 328 days)
+• Rashmi Sharma — 14 October (Colleague; in 333 days)
+• Sneha Shetty — 16 October (Student; in 335 days)
+• Shruthi R — 17 October (Niece; in 336 days)
+• Yashaswini Murthy — 21 October (Niece; in 340 days)
+• Karthik Patil — 26 October (Brother-in-law; in 345 days)",200,REVIEW,Check whether response appropriately asks for clarification,24.1
+V1,39,Ambiguous / unsupported,Show me all private addresses.,Do not claim the dataset contains street addresses.,I could not match that question to a V1 rule. Type 'examples' to see the patterns this deterministic version understands.,200,REVIEW,Verify no unsupported personal information was invented,8.8
+V1,40,Ambiguous / unsupported,Tell me the birthday of the first nephew.,Ask for a specific person; do not arbitrarily choose one.,"I found 12 people recorded as Nephew:
+• Vijay Shetty — 28 November (Nephew; in 13 days)
+• Varun Kumar — 17 December (Nephew; in 32 days)
+• Kiran R — 13 April (Nephew; in 149 days)
+• Vinay Desai — 28 July (Nephew; in 255 days)
+• Karthik Hegde — 01 August (Nephew; in 259 days)
+• Darshan M — 11 August (Nephew; in 269 days)
+• Bharath Rao — 02 September (Nephew; in 291 days)
+• Rahul Patil — 18 September (Nephew; in 307 days)
+• Nikhil Bhat — 25 September (Nephew; in 314 days)
+• Nikhil Hegde — 03 October (Nephew; in 322 days)
+• Ganesh Prasad — 01 November (Nephew; in 351 days)
+• Rohan Hegde — 03 November (Nephew; in 353 days)",200,REVIEW,Check whether response appropriately asks for clarification,21.3
+V2,1,Direct,Any nephew birthdays in September?,Return nephew rows with September DOBs.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,17.0
+V2,2,Direct,How many birthdays are there next month?,Return a count for next month.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,8.4
+V2,3,Direct,Is there any birthday tomorrow?,Return tomorrow matches or a no-match response.,No matching birthdays were found.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,14.0
+V2,4,Direct,When is my wife's birthday?,Return spouse record or a clarification if multiple.,"• Lakshmi Rao — 14 December (Wife)
+• Pallavi Kulkarni — 09 September (Wife)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.6
+V2,5,Direct,Who has birthdays this week?,Return birthdays in the current week (V1 may only support documented rules).,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,7.3
+V2,6,Direct,When is Rahul Patil’s birthday?,Return Rahul Patil DOB from workbook.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,4.5
+V2,7,Direct,Where does Rahul Patil stay?,Return Rahul Patil place from workbook.,Rahul Patil stays in Bengaluru.,200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,4.9
+V2,8,Direct,Show birthdays in October.,Return October birthday rows.,"• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,14.1
+V2,9,Direct,Show upcoming birthdays.,Return upcoming window results.,"• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother)
+• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,22.6
+V2,10,Direct,Count niece birthdays in September.,Return count matching relationship and month.,There are 3 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.0
+V2,11,Paraphrase,Do I need to wish any nephew during September?,Same data result as nephew birthdays in September.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,17.4
+V2,12,Paraphrase,Are there any nephews celebrating in September?,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.5
+V2,13,Paraphrase,List the September birthdays of my nephews.,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.9
+V2,14,Paraphrase,Tell me the birthday date for Rahul Patil.,Return Rahul Patil DOB.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,4.9
+V2,15,Paraphrase,Which city is Rahul Patil living in?,Return Rahul Patil place.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Check place answer against workbook,5.7
+V2,16,Paraphrase,Give me the birthdays coming soon.,Return upcoming birthday results or explain unsupported phrasing.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.4
+V2,17,Paraphrase,How many people celebrate next month?,Return next-month birthday count.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,8.8
+V2,18,Paraphrase,Are there birthday celebrations the day after today?,Recognize tomorrow if supported; otherwise report limitation.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.2
+V2,19,Paraphrase,Show me everyone born in December.,Return December birthday rows.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.8
+V2,20,Paraphrase,I want to know the number of nieces in March.,Return March niece count.,There are 2 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.5
+V2,21,Context / multi-turn,Any nephew birthdays in September? → What about October?,Carry relationship=nephew and change month to October (V3+).,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,22,Context / multi-turn,Birthdays in September → What about October?,Carry birthday-search intent and replace month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,23,Context / multi-turn,Any niece birthdays in June? → What about July?,Carry niece relationship and change month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,24,Context / multi-turn,Count nephew birthdays in August → What about September?,Carry relationship and count intent if implemented.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,25,Context / multi-turn,When is my nephew’s birthday? → Nikhil,"Ask which nephew, then resolve the supplied name.",,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,26,Context / multi-turn,Birthdays in April → What about May?,Use previous birthday-search context.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,27,Context / multi-turn,Any birthdays in November? → Count them.,Carry November and count matching rows.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,28,Context / multi-turn,Any nephew birthdays in September? → Reset conversation → What about October?,"After reset, do not reuse September/nephew context.",,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,29,Context / multi-turn,Who has birthdays in July? → Where does Rahul stay?,New named-person place query should not be polluted by old month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,30,Context / multi-turn,Any birthdays next month? → What about September?,Explicit month should replace relative month.,,,REVIEW,Context carry-over not implemented/documented in this version.,0
+V2,31,Ambiguous / unsupported,When is my nephew’s birthday?,Ask which nephew when multiple records match.,"• Vijay Shetty — 28 November (Nephew)
+• Varun Kumar — 17 December (Nephew)
+• Kiran R — 13 April (Nephew)
+• Vinay Desai — 28 July (Nephew)
+• Karthik Hegde — 01 August (Nephew)
+• Darshan M — 11 August (Nephew)
+• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)
+• Nikhil Hegde — 03 October (Nephew)
+• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)",200,REVIEW,Check whether response appropriately asks for clarification,17.3
+V2,32,Ambiguous / unsupported,When is Nikhil’s birthday?,"If nickname matches multiple records, ask for full name.",Nikhil Hegde's birthday is 03 October 2001.,200,REVIEW,Check nickname ambiguity against workbook,5.3
+V2,33,Ambiguous / unsupported,Who is the kindest person?,State that this is unsupported by the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,10.1
+V2,34,Ambiguous / unsupported,Tell me the phone number of Rahul.,Do not invent or disclose unavailable fields.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Verify no unsupported personal information was invented,4.5
+V2,35,Ambiguous / unsupported,Any birthdays on 31 February?,Reject invalid date / return no valid date; never fabricate.,"• Harish K — 04 February (Brother)
+• Aarav Gowda — 08 February (Colleague)
+• Aditya Patil — 11 February (Brother)
+• Deepa R — 18 February (Sister-in-law)
+• Yashaswini Reddy — 20 February (Student)",200,REVIEW,Verify invalid date handling,11.3
+V2,36,Ambiguous / unsupported,What is my neighbour’s favourite food?,Explain unsupported information.,"• Manjunath Kumar — 27 November (Neighbour)
+• Shruthi Bhat — 21 March (Neighbour)",200,REVIEW,Verify no unsupported personal information was invented,15.3
+V2,37,Ambiguous / unsupported,Find the birthday of an unknown person named Zorina.,Say no matching person is in the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Check that unknown person was not fabricated,12.5
+V2,38,Ambiguous / unsupported,What about October?,"Without prior context, ask what category/query is intended.","• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Check whether response appropriately asks for clarification,19.8
+V2,39,Ambiguous / unsupported,Show me all private addresses.,Do not claim the dataset contains street addresses.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,8.4
+V2,40,Ambiguous / unsupported,Tell me the birthday of the first nephew.,Ask for a specific person; do not arbitrarily choose one.,"• Vijay Shetty — 28 November (Nephew)
+• Varun Kumar — 17 December (Nephew)
+• Kiran R — 13 April (Nephew)
+• Vinay Desai — 28 July (Nephew)
+• Karthik Hegde — 01 August (Nephew)
+• Darshan M — 11 August (Nephew)
+• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)
+• Nikhil Hegde — 03 October (Nephew)
+• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)",200,REVIEW,Check whether response appropriately asks for clarification,15.3
+V3,1,Direct,Any nephew birthdays in September?,Return nephew rows with September DOBs.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.7
+V3,2,Direct,How many birthdays are there next month?,Return a count for next month.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.4
+V3,3,Direct,Is there any birthday tomorrow?,Return tomorrow matches or a no-match response.,No matching birthdays were found.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.4
+V3,4,Direct,When is my wife's birthday?,Return spouse record or a clarification if multiple.,"I found 2 people recorded as Wife: Lakshmi Rao, Pallavi Kulkarni. Which one do you mean?",200,REVIEW,Response returned; manually verify semantic correctness.,10.9
+V3,5,Direct,Who has birthdays this week?,Return birthdays in the current week (V1 may only support documented rules).,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.7
+V3,6,Direct,When is Rahul Patil’s birthday?,Return Rahul Patil DOB from workbook.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,6.0
+V3,7,Direct,Where does Rahul Patil stay?,Return Rahul Patil place from workbook.,Rahul Patil stays in Bengaluru.,200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,7.2
+V3,8,Direct,Show birthdays in October.,Return October birthday rows.,"• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,18.3
+V3,9,Direct,Show upcoming birthdays.,Return upcoming window results.,"• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother)
+• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,28.6
+V3,10,Direct,Count niece birthdays in September.,Return count matching relationship and month.,There are 3 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.5
+V3,11,Paraphrase,Do I need to wish any nephew during September?,Same data result as nephew birthdays in September.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,17.0
+V3,12,Paraphrase,Are there any nephews celebrating in September?,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,16.4
+V3,13,Paraphrase,List the September birthdays of my nephews.,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,18.2
+V3,14,Paraphrase,Tell me the birthday date for Rahul Patil.,Return Rahul Patil DOB.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,5.6
+V3,15,Paraphrase,Which city is Rahul Patil living in?,Return Rahul Patil place.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Check place answer against workbook,5.8
+V3,16,Paraphrase,Give me the birthdays coming soon.,Return upcoming birthday results or explain unsupported phrasing.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.9
+V3,17,Paraphrase,How many people celebrate next month?,Return next-month birthday count.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.9
+V3,18,Paraphrase,Are there birthday celebrations the day after today?,Recognize tomorrow if supported; otherwise report limitation.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.4
+V3,19,Paraphrase,Show me everyone born in December.,Return December birthday rows.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,15.7
+V3,20,Paraphrase,I want to know the number of nieces in March.,Return March niece count.,There are 2 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.4
+V3,21,Context / multi-turn,Any nephew birthdays in September? → What about October?,Carry relationship=nephew and change month to October (V3+).,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | • Nikhil Hegde — 03 October (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,52.7
+V3,22,Context / multi-turn,Birthdays in September → What about October?,Carry birthday-search intent and replace month.,"• Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece) | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,56.7
+V3,23,Context / multi-turn,Any niece birthdays in June? → What about July?,Carry niece relationship and change month.,"• Yashaswini K — 01 June (Niece)
+• Priya Patil — 05 June (Niece)
+• Deepa Sharma — 19 June (Niece)
+• Bhavana Kulkarni6 — 22 June (Niece) | TURN | • Shilpa R — 10 July (Niece)
+• Lakshmi Reddy — 27 July (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,41.3
+V3,24,Context / multi-turn,Count nephew birthdays in August → What about September?,Carry relationship and count intent if implemented.,"There are 2 matching birthdays. | TURN | • Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,34.2
+V3,25,Context / multi-turn,When is my nephew’s birthday? → Nikhil,"Ask which nephew, then resolve the supplied name.","I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean? | TURN | I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,REVIEW,Response returned; manually verify semantic correctness.,21.8
+V3,26,Context / multi-turn,Birthdays in April → What about May?,Use previous birthday-search context.,"• Usha Kulkarni — 03 April (Niece)
+• Kiran R — 13 April (Nephew)
+• Meera Bhat — 13 April (Colleague)
+• Shreyas Rao9 — 14 April (Uncle)
+• Lakshmi Sharma — 20 April (Niece) | TURN | • Ananya S — 01 May (Niece)
+• Arjun Rao — 12 May (Colleague)
+• Vinay Rao — 19 May (Uncle)
+• Vidya Shetty — 21 May (Aunt)
+• Kavya Patil — 28 May (Cousin)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,32.6
+V3,27,Context / multi-turn,Any birthdays in November? → Count them.,Carry November and count matching rows.,"• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)
+• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother) | TURN | There are 6 matching birthdays.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,23.5
+V3,28,Context / multi-turn,Any nephew birthdays in September? → Reset conversation → What about October?,"After reset, do not reuse September/nephew context.","• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | Conversation reset. | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,35.5
+V3,29,Context / multi-turn,Who has birthdays in July? → Where does Rahul stay?,New named-person place query should not be polluted by old month.,"• Akash Gowda — 03 July (Father)
+• Sanjay M — 07 July (Uncle)
+• Yashaswini Rao — 07 July (Sister)
+• Shilpa R — 10 July (Niece)
+• Vaishnavi Murthy — 12 July (Sister-in-law)
+• Kiran Hegde — 18 July (Student)
+• Lakshmi Reddy — 27 July (Niece)
+• Vinay Desai — 28 July (Nephew) | TURN | Rahul Patil stays in Bengaluru.",200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,25.2
+V3,30,Context / multi-turn,Any birthdays next month? → What about September?,Explicit month should replace relative month.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew) | TURN | • Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,34.3
+V3,31,Ambiguous / unsupported,When is my nephew’s birthday?,Ask which nephew when multiple records match.,"I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean?",200,PASS,Clarification cue detected,12.3
+V3,32,Ambiguous / unsupported,When is Nikhil’s birthday?,"If nickname matches multiple records, ask for full name.","I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,PASS,Ambiguous nickname clarification detected,12.4
+V3,33,Ambiguous / unsupported,Who is the kindest person?,State that this is unsupported by the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,13.2
+V3,34,Ambiguous / unsupported,Tell me the phone number of Rahul.,Do not invent or disclose unavailable fields.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Verify no unsupported personal information was invented,14.2
+V3,35,Ambiguous / unsupported,Any birthdays on 31 February?,Reject invalid date / return no valid date; never fabricate.,"• Harish K — 04 February (Brother)
+• Aarav Gowda — 08 February (Colleague)
+• Aditya Patil — 11 February (Brother)
+• Deepa R — 18 February (Sister-in-law)
+• Yashaswini Reddy — 20 February (Student)",200,REVIEW,Verify invalid date handling,26.1
+V3,36,Ambiguous / unsupported,What is my neighbour’s favourite food?,Explain unsupported information.,"• Manjunath Kumar — 27 November (Neighbour)
+• Shruthi Bhat — 21 March (Neighbour)",200,REVIEW,Verify no unsupported personal information was invented,16.2
+V3,37,Ambiguous / unsupported,Find the birthday of an unknown person named Zorina.,Say no matching person is in the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Check that unknown person was not fabricated,10.8
+V3,38,Ambiguous / unsupported,What about October?,"Without prior context, ask what category/query is intended.","• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Check whether response appropriately asks for clarification,16.8
+V3,39,Ambiguous / unsupported,Show me all private addresses.,Do not claim the dataset contains street addresses.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,20.2
+V3,40,Ambiguous / unsupported,Tell me the birthday of the first nephew.,Ask for a specific person; do not arbitrarily choose one.,"• Vijay Shetty — 28 November (Nephew)
+• Varun Kumar — 17 December (Nephew)
+• Kiran R — 13 April (Nephew)
+• Vinay Desai — 28 July (Nephew)
+• Karthik Hegde — 01 August (Nephew)
+• Darshan M — 11 August (Nephew)
+• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)
+• Nikhil Hegde — 03 October (Nephew)
+• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)",200,REVIEW,Check whether response appropriately asks for clarification,15.2
+V4,1,Direct,Any nephew birthdays in September?,Return nephew rows with September DOBs.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.6
+V4,2,Direct,How many birthdays are there next month?,Return a count for next month.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.1
+V4,3,Direct,Is there any birthday tomorrow?,Return tomorrow matches or a no-match response.,No matching birthdays were found.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,16.0
+V4,4,Direct,When is my wife's birthday?,Return spouse record or a clarification if multiple.,"I found 2 people recorded as Wife: Lakshmi Rao, Pallavi Kulkarni. Which one do you mean?",200,REVIEW,Response returned; manually verify semantic correctness.,10.7
+V4,5,Direct,Who has birthdays this week?,Return birthdays in the current week (V1 may only support documented rules).,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,8.5
+V4,6,Direct,When is Rahul Patil’s birthday?,Return Rahul Patil DOB from workbook.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,2.7
+V4,7,Direct,Where does Rahul Patil stay?,Return Rahul Patil place from workbook.,Rahul Patil stays in Bengaluru.,200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,3.7
+V4,8,Direct,Show birthdays in October.,Return October birthday rows.,"• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.4
+V4,9,Direct,Show upcoming birthdays.,Return upcoming window results.,"• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother)
+• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,14.5
+V4,10,Direct,Count niece birthdays in September.,Return count matching relationship and month.,There are 3 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.9
+V4,11,Paraphrase,Do I need to wish any nephew during September?,Same data result as nephew birthdays in September.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,14.3
+V4,12,Paraphrase,Are there any nephews celebrating in September?,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.8
+V4,13,Paraphrase,List the September birthdays of my nephews.,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.5
+V4,14,Paraphrase,Tell me the birthday date for Rahul Patil.,Return Rahul Patil DOB.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,5.3
+V4,15,Paraphrase,Which city is Rahul Patil living in?,Return Rahul Patil place.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Check place answer against workbook,5.5
+V4,16,Paraphrase,Give me the birthdays coming soon.,Return upcoming birthday results or explain unsupported phrasing.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,8.7
+V4,17,Paraphrase,How many people celebrate next month?,Return next-month birthday count.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.8
+V4,18,Paraphrase,Are there birthday celebrations the day after today?,Recognize tomorrow if supported; otherwise report limitation.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,9.2
+V4,19,Paraphrase,Show me everyone born in December.,Return December birthday rows.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.8
+V4,20,Paraphrase,I want to know the number of nieces in March.,Return March niece count.,There are 2 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,15.8
+V4,21,Context / multi-turn,Any nephew birthdays in September? → What about October?,Carry relationship=nephew and change month to October (V3+).,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | • Nikhil Hegde — 03 October (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,38.2
+V4,22,Context / multi-turn,Birthdays in September → What about October?,Carry birthday-search intent and replace month.,"• Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece) | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,38.5
+V4,23,Context / multi-turn,Any niece birthdays in June? → What about July?,Carry niece relationship and change month.,"• Yashaswini K — 01 June (Niece)
+• Priya Patil — 05 June (Niece)
+• Deepa Sharma — 19 June (Niece)
+• Bhavana Kulkarni6 — 22 June (Niece) | TURN | • Shilpa R — 10 July (Niece)
+• Lakshmi Reddy — 27 July (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,29.0
+V4,24,Context / multi-turn,Count nephew birthdays in August → What about September?,Carry relationship and count intent if implemented.,"There are 2 matching birthdays. | TURN | • Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,31.2
+V4,25,Context / multi-turn,When is my nephew’s birthday? → Nikhil,"Ask which nephew, then resolve the supplied name.","I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean? | TURN | I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,REVIEW,Response returned; manually verify semantic correctness.,22.1
+V4,26,Context / multi-turn,Birthdays in April → What about May?,Use previous birthday-search context.,"• Usha Kulkarni — 03 April (Niece)
+• Kiran R — 13 April (Nephew)
+• Meera Bhat — 13 April (Colleague)
+• Shreyas Rao9 — 14 April (Uncle)
+• Lakshmi Sharma — 20 April (Niece) | TURN | • Ananya S — 01 May (Niece)
+• Arjun Rao — 12 May (Colleague)
+• Vinay Rao — 19 May (Uncle)
+• Vidya Shetty — 21 May (Aunt)
+• Kavya Patil — 28 May (Cousin)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,36.4
+V4,27,Context / multi-turn,Any birthdays in November? → Count them.,Carry November and count matching rows.,"• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)
+• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother) | TURN | There are 6 matching birthdays.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,32.4
+V4,28,Context / multi-turn,Any nephew birthdays in September? → Reset conversation → What about October?,"After reset, do not reuse September/nephew context.","• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | Conversation reset. | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,49.2
+V4,29,Context / multi-turn,Who has birthdays in July? → Where does Rahul stay?,New named-person place query should not be polluted by old month.,"• Akash Gowda — 03 July (Father)
+• Sanjay M — 07 July (Uncle)
+• Yashaswini Rao — 07 July (Sister)
+• Shilpa R — 10 July (Niece)
+• Vaishnavi Murthy — 12 July (Sister-in-law)
+• Kiran Hegde — 18 July (Student)
+• Lakshmi Reddy — 27 July (Niece)
+• Vinay Desai — 28 July (Nephew) | TURN | Rahul Patil stays in Bengaluru.",200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,35.4
+V4,30,Context / multi-turn,Any birthdays next month? → What about September?,Explicit month should replace relative month.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew) | TURN | • Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,43.3
+V4,31,Ambiguous / unsupported,When is my nephew’s birthday?,Ask which nephew when multiple records match.,"I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean?",200,PASS,Clarification cue detected,15.2
+V4,32,Ambiguous / unsupported,When is Nikhil’s birthday?,"If nickname matches multiple records, ask for full name.","I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,PASS,Ambiguous nickname clarification detected,21.6
+V4,33,Ambiguous / unsupported,Who is the kindest person?,State that this is unsupported by the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,26.9
+V4,34,Ambiguous / unsupported,Tell me the phone number of Rahul.,Do not invent or disclose unavailable fields.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Verify no unsupported personal information was invented,30.9
+V4,35,Ambiguous / unsupported,Any birthdays on 31 February?,Reject invalid date / return no valid date; never fabricate.,"• Harish K — 04 February (Brother)
+• Aarav Gowda — 08 February (Colleague)
+• Aditya Patil — 11 February (Brother)
+• Deepa R — 18 February (Sister-in-law)
+• Yashaswini Reddy — 20 February (Student)",200,REVIEW,Verify invalid date handling,21.5
+V4,36,Ambiguous / unsupported,What is my neighbour’s favourite food?,Explain unsupported information.,"• Manjunath Kumar — 27 November (Neighbour)
+• Shruthi Bhat — 21 March (Neighbour)",200,REVIEW,Verify no unsupported personal information was invented,25.8
+V4,37,Ambiguous / unsupported,Find the birthday of an unknown person named Zorina.,Say no matching person is in the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Check that unknown person was not fabricated,16.5
+V4,38,Ambiguous / unsupported,What about October?,"Without prior context, ask what category/query is intended.","• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Check whether response appropriately asks for clarification,21.9
+V4,39,Ambiguous / unsupported,Show me all private addresses.,Do not claim the dataset contains street addresses.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,16.8
+V4,40,Ambiguous / unsupported,Tell me the birthday of the first nephew.,Ask for a specific person; do not arbitrarily choose one.,"• Vijay Shetty — 28 November (Nephew)
+• Varun Kumar — 17 December (Nephew)
+• Kiran R — 13 April (Nephew)
+• Vinay Desai — 28 July (Nephew)
+• Karthik Hegde — 01 August (Nephew)
+• Darshan M — 11 August (Nephew)
+• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)
+• Nikhil Hegde — 03 October (Nephew)
+• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)",200,REVIEW,Check whether response appropriately asks for clarification,25.0
+V5,1,Direct,Any nephew birthdays in September?,Return nephew rows with September DOBs.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,16.5
+V5,2,Direct,How many birthdays are there next month?,Return a count for next month.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.0
+V5,3,Direct,Is there any birthday tomorrow?,Return tomorrow matches or a no-match response.,No matching birthdays were found.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,15.7
+V5,4,Direct,When is my wife's birthday?,Return spouse record or a clarification if multiple.,"I found 2 people recorded as Wife: Lakshmi Rao, Pallavi Kulkarni. Which one do you mean?",200,REVIEW,Response returned; manually verify semantic correctness.,12.3
+V5,5,Direct,Who has birthdays this week?,Return birthdays in the current week (V1 may only support documented rules).,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.1
+V5,6,Direct,When is Rahul Patil’s birthday?,Return Rahul Patil DOB from workbook.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,3.5
+V5,7,Direct,Where does Rahul Patil stay?,Return Rahul Patil place from workbook.,Rahul Patil stays in Bengaluru.,200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,4.7
+V5,8,Direct,Show birthdays in October.,Return October birthday rows.,"• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,16.4
+V5,9,Direct,Show upcoming birthdays.,Return upcoming window results.,"• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother)
+• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,20.4
+V5,10,Direct,Count niece birthdays in September.,Return count matching relationship and month.,There are 3 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.9
+V5,11,Paraphrase,Do I need to wish any nephew during September?,Same data result as nephew birthdays in September.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,15.5
+V5,12,Paraphrase,Are there any nephews celebrating in September?,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,14.9
+V5,13,Paraphrase,List the September birthdays of my nephews.,Same result as direct query.,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,17.7
+V5,14,Paraphrase,Tell me the birthday date for Rahul Patil.,Return Rahul Patil DOB.,Rahul Patil's birthday is 18 September 2004.,200,PASS,Named person appears in response,3.1
+V5,15,Paraphrase,Which city is Rahul Patil living in?,Return Rahul Patil place.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Check place answer against workbook,3.8
+V5,16,Paraphrase,Give me the birthdays coming soon.,Return upcoming birthday results or explain unsupported phrasing.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,11.3
+V5,17,Paraphrase,How many people celebrate next month?,Return next-month birthday count.,There are 6 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,13.4
+V5,18,Paraphrase,Are there birthday celebrations the day after today?,Recognize tomorrow if supported; otherwise report limitation.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,10.9
+V5,19,Paraphrase,Show me everyone born in December.,Return December birthday rows.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,15.5
+V5,20,Paraphrase,I want to know the number of nieces in March.,Return March niece count.,There are 2 matching birthdays.,200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,12.4
+V5,21,Context / multi-turn,Any nephew birthdays in September? → What about October?,Carry relationship=nephew and change month to October (V3+).,"• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | • Nikhil Hegde — 03 October (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,30.9
+V5,22,Context / multi-turn,Birthdays in September → What about October?,Carry birthday-search intent and replace month.,"• Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece) | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,30.4
+V5,23,Context / multi-turn,Any niece birthdays in June? → What about July?,Carry niece relationship and change month.,"• Yashaswini K — 01 June (Niece)
+• Priya Patil — 05 June (Niece)
+• Deepa Sharma — 19 June (Niece)
+• Bhavana Kulkarni6 — 22 June (Niece) | TURN | • Shilpa R — 10 July (Niece)
+• Lakshmi Reddy — 27 July (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,34.9
+V5,24,Context / multi-turn,Count nephew birthdays in August → What about September?,Carry relationship and count intent if implemented.,"There are 2 matching birthdays. | TURN | • Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,30.5
+V5,25,Context / multi-turn,When is my nephew’s birthday? → Nikhil,"Ask which nephew, then resolve the supplied name.","I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean? | TURN | I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,REVIEW,Response returned; manually verify semantic correctness.,22.3
+V5,26,Context / multi-turn,Birthdays in April → What about May?,Use previous birthday-search context.,"• Usha Kulkarni — 03 April (Niece)
+• Kiran R — 13 April (Nephew)
+• Meera Bhat — 13 April (Colleague)
+• Shreyas Rao9 — 14 April (Uncle)
+• Lakshmi Sharma — 20 April (Niece) | TURN | • Ananya S — 01 May (Niece)
+• Arjun Rao — 12 May (Colleague)
+• Vinay Rao — 19 May (Uncle)
+• Vidya Shetty — 21 May (Aunt)
+• Kavya Patil — 28 May (Cousin)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,31.4
+V5,27,Context / multi-turn,Any birthdays in November? → Count them.,Carry November and count matching rows.,"• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)
+• Vaishnavi Naik — 19 November (Friend)
+• Manjunath Kumar — 27 November (Neighbour)
+• Vijay Shetty — 28 November (Nephew)
+• Sanjay Rao — 30 November (Brother) | TURN | There are 6 matching birthdays.",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,24.3
+V5,28,Context / multi-turn,Any nephew birthdays in September? → Reset conversation → What about October?,"After reset, do not reuse September/nephew context.","• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew) | TURN | Conversation reset. | TURN | • Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,29.1
+V5,29,Context / multi-turn,Who has birthdays in July? → Where does Rahul stay?,New named-person place query should not be polluted by old month.,"• Akash Gowda — 03 July (Father)
+• Sanjay M — 07 July (Uncle)
+• Yashaswini Rao — 07 July (Sister)
+• Shilpa R — 10 July (Niece)
+• Vaishnavi Murthy — 12 July (Sister-in-law)
+• Kiran Hegde — 18 July (Student)
+• Lakshmi Reddy — 27 July (Niece)
+• Vinay Desai — 28 July (Nephew) | TURN | Rahul Patil stays in Bengaluru.",200,PASS,Place lookup returned a response mentioning Rahul or a stay/place,23.8
+V5,30,Context / multi-turn,Any birthdays next month? → What about September?,Explicit month should replace relative month.,"• Divya Naik — 03 December (Friend)
+• Divya Patil — 10 December (Sister-in-law)
+• Harish Joshi — 13 December (Uncle)
+• Lakshmi Rao — 14 December (Wife)
+• Shreyas Desai — 16 December (Cousin)
+• Varun Kumar — 17 December (Nephew) | TURN | • Chaitra Rao — 01 September (Aunt)
+• Bharath Rao — 02 September (Nephew)
+• Pooja Joshi — 04 September (Student)
+• Aditya Joshi — 05 September (Friend)
+• Nayana Joshi — 06 September (Niece)
+• Soumya Reddy — 08 September (Sister)
+• Pallavi Kulkarni — 09 September (Wife)
+• Anand Sharma — 15 September (Brother-in-law)
+• Pranav Kulkarni — 16 September (Cousin)
+• Rahul Patil — 18 September (Nephew)
+• Asha M — 20 September (Niece)
+• Deepak Hegde — 20 September (Student)
+• Lakshmi Kumar — 23 September (Colleague)
+• Nikhil Bhat — 25 September (Nephew)
+• Sanjay Naik — 25 September (Brother)
+• Ananya Patil — 27 September (Niece)",200,REVIEW,Response returned; verify records/count against workbook and expected behaviour.,27.2
+V5,31,Ambiguous / unsupported,When is my nephew’s birthday?,Ask which nephew when multiple records match.,"I found 12 people recorded as Nephew: Rahul Patil, Nikhil Hegde, Nikhil Bhat, Varun Kumar, Rohan Hegde, Vijay Shetty, Karthik Hegde, Darshan M. Which one do you mean?",200,PASS,Clarification cue detected,10.2
+V5,32,Ambiguous / unsupported,When is Nikhil’s birthday?,"If nickname matches multiple records, ask for full name.","I found multiple people with that nickname: Nikhil Hegde, Nikhil Rao, Nikhil Reddy, Nikhil S6. Please use a full name.",200,PASS,Ambiguous nickname clarification detected,9.5
+V5,33,Ambiguous / unsupported,Who is the kindest person?,State that this is unsupported by the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,12.0
+V5,34,Ambiguous / unsupported,Tell me the phone number of Rahul.,Do not invent or disclose unavailable fields.,Rahul Patil's birthday is 18 September 2004.,200,REVIEW,Verify no unsupported personal information was invented,11.0
+V5,35,Ambiguous / unsupported,Any birthdays on 31 February?,Reject invalid date / return no valid date; never fabricate.,"• Harish K — 04 February (Brother)
+• Aarav Gowda — 08 February (Colleague)
+• Aditya Patil — 11 February (Brother)
+• Deepa R — 18 February (Sister-in-law)
+• Yashaswini Reddy — 20 February (Student)",200,REVIEW,Verify invalid date handling,13.8
+V5,36,Ambiguous / unsupported,What is my neighbour’s favourite food?,Explain unsupported information.,"• Manjunath Kumar — 27 November (Neighbour)
+• Shruthi Bhat — 21 March (Neighbour)",200,REVIEW,Verify no unsupported personal information was invented,13.5
+V5,37,Ambiguous / unsupported,Find the birthday of an unknown person named Zorina.,Say no matching person is in the dataset.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Check that unknown person was not fabricated,11.4
+V5,38,Ambiguous / unsupported,What about October?,"Without prior context, ask what category/query is intended.","• Nayana Kumar — 01 October (Sister-in-law)
+• Nikhil Hegde — 03 October (Nephew)
+• Nikhil Rao — 03 October (Uncle)
+• Aarav Shetty — 04 October (Student)
+• Manjunath Prasad — 06 October (Brother)
+• Pooja Patil — 06 October (Aunt)
+• Usha K — 09 October (Sister)
+• Rashmi Sharma — 14 October (Colleague)
+• Sneha Shetty — 16 October (Student)
+• Shruthi R — 17 October (Niece)
+• Yashaswini Murthy — 21 October (Niece)
+• Karthik Patil — 26 October (Brother-in-law)",200,REVIEW,Check whether response appropriately asks for clarification,14.8
+V5,39,Ambiguous / unsupported,Show me all private addresses.,Do not claim the dataset contains street addresses.,"Please specify a person, relationship, month or date range. Type 'help' for examples.",200,REVIEW,Verify no unsupported personal information was invented,9.8
+V5,40,Ambiguous / unsupported,Tell me the birthday of the first nephew.,Ask for a specific person; do not arbitrarily choose one.,"• Vijay Shetty — 28 November (Nephew)
+• Varun Kumar — 17 December (Nephew)
+• Kiran R — 13 April (Nephew)
+• Vinay Desai — 28 July (Nephew)
+• Karthik Hegde — 01 August (Nephew)
+• Darshan M — 11 August (Nephew)
+• Bharath Rao — 02 September (Nephew)
+• Rahul Patil — 18 September (Nephew)
+• Nikhil Bhat — 25 September (Nephew)
+• Nikhil Hegde — 03 October (Nephew)
+• Ganesh Prasad — 01 November (Nephew)
+• Rohan Hegde — 03 November (Nephew)",200,REVIEW,Check whether response appropriately asks for clarification,13.3
